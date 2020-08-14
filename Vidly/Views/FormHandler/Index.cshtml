@@ -1,0 +1,31 @@
+﻿@using (Html.BeginForm(new {
+    controller = "FormHandler",
+    action = "Index",
+    location = "SL",
+    city = "Colombo"
+}))
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <h2>User Details</h2>
+    <input type="text" name="FirstName" />
+    <input type="submit" name="submit" />
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var form = document.getElementById("form");
+            form.onsubmit = function (event) {
+                form.action = "@Url.Content("~/FormHandler/Index")";
+            };
+        });
+    </script>
+
+}
+
+
+
